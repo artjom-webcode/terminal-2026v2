@@ -1,0 +1,407 @@
+/*
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+font-family: "DM Sans", sans-serif;
+*/
+
+/**************************/
+/* VARIABLES */
+/**************************/
+:root {
+  /* COLORS */
+  --clr-gray-0: #f8f9fa;
+  --clr-gray-1: #f1f3f5;
+  --clr-gray-2: #e9ecef;
+  --clr-gray-3: #dee2e6;
+  --clr-gray-4: #ced4da;
+  --clr-gray-5: #adb5bd;
+  --clr-gray-6: #868e96;
+  --clr-gray-7: #495057;
+  --clr-gray-8: #343a40;
+  --clr-gray-9: #212529;
+
+  --clr-primary: #1971c2;
+  --clr-primary-dark: #1864ab;
+  --clr-primary-light: #74c0fc;
+  --clr-primary-soft: #e7f5ff;
+
+  /* FONT WEIGHTS */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* FONTS */
+  --font-1: "Crimson Text", serif;
+  --font-2: "DM Sans", sans-serif;
+
+  /* FONT SIZES */
+  --fz-h1: 36px;
+  --fz-h2: 32px;
+  --fz-h3: 24px;
+  --fz-h4: 20px;
+  --fz-h5: 16px;
+  --fz-h6: 14px;
+  --fz-body-lg: 18px;
+  --fz-body-md: 16px;
+  --fz-body-sm: 14px;
+
+  /* RADIUS */
+  --radius: 10px;
+
+  /*========== Spaces ==========*/
+  /* все значения кратны 4 */
+  --sp-xxxs: 0.125rem; /* 2px   */
+  --sp-xxs: 0.25rem; /* 4px   */
+  --sp-xs: 0.5rem; /* 8px   */
+  --sp-sm: 0.75rem; /* 12px  */
+  --sp-md: 1rem; /* 16px  */
+  --sp-lg: 1.5rem; /* 24px  */
+  --sp-xl: 2rem; /* 32px  */
+  --sp-2xl: 3rem; /* 48px  */
+  --sp-3xl: 4rem; /* 64px  */
+  --sp-4xl: 5rem; /* 80px  */
+  --sp-5xl: 6rem; /* 96px  */
+  --sp-6xl: 8rem; /* 128px */
+}
+
+/**************************/
+/* RESET */
+/**************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--clr-gray-3);
+  font-family: var(--font-2);
+  font-size: var(--fz-body-md);
+  line-height: 1.4;
+  color: var(--clr-gray-9);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: inherit;
+}
+
+/**************************/
+/* GENERAL REUSABLE COMPONENTS */
+/**************************/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-md) 14px;
+}
+
+/**************************/
+/* BUTTONS */
+/**************************/
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  margin-bottom: var(--sp-lg);
+}
+
+.btn-wrapper button {
+  font-size: var(--fz-body-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  padding: var(--sp-xs) var(--sp-lg);
+  border-radius: var(--radius);
+  border: 2px solid var(--clr-gray-3);
+  background-color: var(--clr-gray-0);
+  color: var(--clr-gray-8);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-wrapper button:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background-color: var(--clr-gray-1);
+}
+
+.btn-wrapper button:active {
+  transform: scale(0.97);
+}
+
+.btn-wrapper button:focus-visible {
+  outline: 2px solid var(--clr-primary-light);
+  outline-offset: 2px;
+}
+
+/* главная кнопка */
+.btn-wrapper .add-data {
+  background-color: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: var(--clr-gray-1);
+}
+
+.btn-wrapper .add-data:hover {
+  background-color: var(--clr-primary-dark);
+  border-color: var(--clr-primary-dark);
+  color: #fff;
+}
+
+/* активная кнопка (All / Filter) */
+.btn-wrapper button.active {
+  border-color: var(--clr-primary);
+  background-color: var(--clr-primary-soft);
+  color: var(--clr-primary);
+}
+
+/**************************/
+/* TANKS LIST */
+/**************************/
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.tank {
+  cursor: pointer;
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px 150px 70px 1fr 100px 80px;
+  align-items: center;
+  row-gap: var(--sp-xs);
+  padding: var(--sp-xs);
+  border: 2px solid var(--clr-gray-2);
+  border-radius: var(--radius);
+  background-color: var(--clr-gray-0);
+  transition: border-color 0.2s ease;
+}
+
+.tank:hover {
+  border-color: var(--clr-gray-4);
+}
+
+/* выбранная карточка (после :hover, чтобы рамка оставалась синей) */
+.tank--active,
+.tank--active:hover {
+  border-color: var(--clr-primary);
+}
+
+.tank__show {
+  display: none;
+}
+
+.tank__nr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: var(--fz-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  border-radius: var(--radius);
+  background-color: var(--clr-primary-light);
+  color: var(--clr-primary);
+  transition: background-color 0.2s ease;
+}
+
+.tank__nr:hover {
+  background-color: #a5d8ff;
+}
+
+.tank__name {
+  font-weight: var(--fw-bold);
+}
+
+.temperature {
+  justify-self: end;
+  padding: 0 var(--sp-sm);
+}
+
+/* заметка: скрыта, пока у карточки нет класса tank--open */
+.tank__info {
+  display: none;
+  grid-column: 2 / -1;
+  width: 100%;
+  min-height: 80px;
+  padding: var(--sp-sm);
+  font-family: var(--font-2);
+  font-size: var(--fz-body-md);
+  line-height: 1.4;
+  color: var(--clr-gray-9);
+  border: 2px solid var(--clr-gray-3);
+  border-radius: var(--radius);
+  background-color: #fff;
+  resize: vertical;
+  cursor: text;
+}
+
+.tank__info:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+}
+
+.tank--open .tank__info {
+  display: block;
+}
+
+/**************************/
+/* MODAL */
+/**************************/
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 14px;
+  overflow-y: auto;
+  background-color: var(--clr-gray-2);
+}
+
+.modal-open {
+  display: flex;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.text-from-pdf {
+  width: 100%;
+  min-height: 150px;
+  padding: var(--sp-sm);
+  font-family: var(--font-2);
+  font-size: var(--fz-body-md);
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius);
+  background-color: #fff;
+  resize: vertical;
+}
+
+.text-from-pdf:focus {
+  outline: none;
+  border-color: var(--clr-primary-dark);
+}
+
+.save,
+.close-modal {
+  padding: 14px var(--sp-lg);
+  font-size: var(--fz-body-lg);
+  color: var(--clr-gray-1);
+  border-radius: var(--radius);
+  background-color: var(--clr-primary);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.save:hover,
+.close-modal:hover {
+  background-color: var(--clr-primary-dark);
+}
+
+.save:active,
+.close-modal:active {
+  transform: scale(0.98);
+}
+
+/**************************/
+/* MOBILE */
+/**************************/
+/* @media (max-width: 700px) {
+  .tank {
+    grid-template-columns: 60px 1fr 1fr;
+    row-gap: var(--sp-xs);
+  }
+
+  .tank__nr {
+    grid-row: span 2;
+  }
+
+  .temperature {
+    justify-self: start;
+    padding: 0;
+  }
+
+  .tank__info {
+    grid-column: 1 / -1;
+  }
+} */
+
+/* 
+============
+ NOTES
+======
+*/
+.notes {
+  display: none;
+}
+.notes--open {
+  display: block;
+}
+.notes__area {
+  border-radius: 8px;
+  border: 2px solid var(--clr-gray-3);
+  width: 100%;
+  min-height: 80px; /* минимальная высота, когда текста мало */
+  resize: none;
+  overflow: hidden;
+  field-sizing: content; /* высота растёт вместе с текстом */
+
+  padding: 14px;
+  color: #1864ab;
+  font-size: 18px;
+}
