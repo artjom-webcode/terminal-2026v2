@@ -213,7 +213,7 @@ p {
   cursor: pointer;
   position: relative;
   display: grid;
-  grid-template-columns: 70px 150px 70px 1fr 100px 80px;
+  grid-template-columns: 70px minmax(min-content, 1fr) 70px minmax(min-content, 1fr) 100px 80px;
   align-items: center;
   row-gap: var(--sp-xs);
   padding: var(--sp-xs);
@@ -263,6 +263,12 @@ p {
 .temperature {
   justify-self: end;
   padding: 0 var(--sp-sm);
+}
+.temperature__red {
+  color: #0ca678;
+}
+.temperature__blue {
+  color: #1c7ed6;
 }
 
 /* заметка: скрыта, пока у карточки нет класса tank--open */
@@ -404,4 +410,106 @@ p {
   padding: 14px;
   color: #1864ab;
   font-size: 18px;
+}
+
+/* 
+============
+ PARK
+============
+*/
+.park-form {
+  margin-top: 24px;
+  width: 100%;
+}
+.park {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 70px);
+  gap: 10px;
+}
+.park__item {
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: #1864ab;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;
+}
+.park__number {
+  align-self: start;
+}
+.park__fuel-name {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  color: inherit;
+}
+/* line 1 */
+.park__item--1 {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.park__item--7 {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.park__item--11 {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+.park__item--14 {
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+.park__item--15 {
+  grid-column: 1/2;
+  grid-row: 5/6;
+}
+
+/* line 2 */
+.park__item--2 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.park__item--3 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.park__item--4 {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+.park__item--5 {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+.park__item--6 {
+  grid-column: 2/3;
+  grid-row: 5/6;
+}
+/* line 3 */
+.park__item--8 {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+/* line 4 */
+.park__item--12 {
+  grid-column: 4/5;
+  grid-row: 1/2;
+}
+.park__item--13 {
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+/* line 5 */
+.park__item--9 {
+  grid-column: 5/6;
+  grid-row: 1/2;
+}
+.park__item--10 {
+  grid-column: 5/6;
+  grid-row: 2/3;
 }

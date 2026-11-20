@@ -188,8 +188,8 @@ function tankTemplate(el) {
       <p class="tank__density">${el.density || "—"}</p>
       <p class="tank__sert">${el.certificate ?? "—"}</p>
       <p class="tank__date">${el.certificateDate ?? "—"}</p>
-      <p class="temperature">
-        ${el.temp ?? "—"}
+      <p class="temperature ${el.temp > 0 ? "temperature__red" : "temperature__blue"}">
+        ${el.temp ?? "—"} 
         <i class="ri-celsius-line"></i>
       </p>
       <textarea class="tank__info" data-tank="${el.tank}" placeholder="Заметка...">${el.info}</textarea>
@@ -336,3 +336,22 @@ notesArea.addEventListener("input", () => {
 
 takeNoteFromLocalAndShow();
 leaveNotesOpenIfNotEmpty();
+
+// =============================================
+// PARK
+// =============================================
+
+const parkForm = document.querySelector(".park-form");
+const parkFromLocal = JSON.parse(localStorage.getItem("park"));
+console.log(parkFromLocal);
+
+parkForm.querySelectorAll(".park__fuel-name").forEach((el, i) => {
+  el.value = parkFromLocal[i];
+});
+
+parkForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const inputs = parkForm.querySelectorAll(".park__fuel-name");
+  const values = Array.from(inputs).map((input) => input.value.trim());
+  localStorage.setItem("park", JSON.stringify(values));
+});
